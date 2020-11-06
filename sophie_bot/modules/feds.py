@@ -289,6 +289,7 @@ async def leave_fed_comm(message, chat, fed, strings):
     user_id = message.from_user.id
     if not await is_chat_creator(chat['chat_id'], user_id):
         await message.reply(strings['only_creators'])
+        return
 
     await db.feds.update_one(
         {'_id': fed['_id']},
